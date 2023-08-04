@@ -1,0 +1,293 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <!-- Font Family -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome CDN -->
+    <script
+      src="https://kit.fontawesome.com/405dfcd106.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Style Link-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylequ.css' %}">
+    <title>Document</title>
+    <title>Autism Prediction</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand fw-bold" href="/">Autism Prediction</a>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/questions">Questions</a>
+              </li>
+              <li class="nav-item user">
+                <a style="color: white" class="nav-link" href="#">Hello User</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="question-table">
+        <table>
+          <colgroup>
+            <col />
+            <col />
+            <col />
+            <col />
+          </colgroup>
+          <tbody>
+            <tr style="background-color: #865dff !important; color: white">
+              <td style="width: 5%">
+                <p><b>S. No</b></p>
+              </td>
+              <td>
+                <p><b>Feature</b></p>
+              </td>
+              <td>
+                <p><b>Description</b></p>
+              </td>
+              <td style="width: 12%">
+                <p><b>Data Type</b></p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>1.</p></td>
+              <td><p>Age</p></td>
+              <td><p>Patients Age in years</p></td>
+              <td><p>Float</p></td>
+            </tr>
+            <tr>
+              <td><p>2.</p></td>
+              <td><p>Gender</p></td>
+              <td><p>Gender of Patient (Male, Female)</p></td>
+              <td><p>Object</p></td>
+            </tr>
+            <tr>
+              <td><p>3.</p></td>
+              <td><p>Delivery</p></td>
+              <td><p>Patients delivery process (normal, c-section)</p></td>
+              <td><p>Object</p></td>
+            </tr>
+            <tr>
+              <td><p>4.</p></td>
+              <td><p>Birth Injury</p></td>
+              <td><p>Did the patient have any birth injuries?</p></td>
+              <td><p>Object (yes, no)</p></td>
+            </tr>
+            <tr>
+              <td><p>5.</p></td>
+              <td><p>Jaundice</p></td>
+              <td><p>Whether the case was born with jaundice</p></td>
+              <td><p>Object (yes, no)</p></td>
+            </tr>
+            <tr>
+              <td><p>6.</p></td>
+              <td><p>Cousin Marriage</p></td>
+              <td><p>Are the patient parent's cousins?</p></td>
+              <td><p>Object (yes, no)</p></td>
+            </tr>
+            <tr>
+              <td><p>7.</p></td>
+              <td><p>Q1</p></td>
+              <td>
+                <p>
+                  Does the child turn their head to locate the source of sound/
+                  voice?
+                </p>
+              </td>
+              <td><p>Object (yes, no)</p></td>
+            </tr>
+            <tr>
+              <td><p>8.</p></td>
+              <td><p>Q2</p></td>
+              <td><p>Do they respond to their own name?</p></td>
+              <td><p>Object (yes, no)</p></td>
+            </tr>
+            <tr>
+              <td><p>9.</p></td>
+              <td><p>Q3</p></td>
+              <td><p>Can the child identify family members by name?</p></td>
+              <td><p>Object (yes, no)</p></td>
+            </tr>
+            <tr>
+              <td><p>10.</p></td>
+              <td><p>Q4</p></td>
+              <td>
+                <p>
+                  How does the child respond if you tell them "no"? (no
+                  response, aggressive, cry, good, shouting)
+                </p>
+              </td>
+              <td><p>Object</p></td>
+            </tr>
+            <tr>
+              <td><p>11.</p></td>
+              <td><p>Q5</p></td>
+              <td>
+                <p>Can the child understand the meaning of any other words?</p>
+              </td>
+              <td><p>Object (yes, no)</p></td>
+            </tr>
+            <tr>
+              <td><p>12.</p></td>
+              <td><p>Q6</p></td>
+              <td>
+                <p>
+                  How does the child communicate? (Do they cry, gesture, point,
+                  push, take people's hands, nod/ shake their head, or tantrum?)
+                </p>
+              </td>
+              <td><p>Object</p></td>
+            </tr>
+            <tr>
+              <td><p>13.</p></td>
+              <td><p>Q7</p></td>
+              <td><p>Does/ did the child babble?</p></td>
+              <td><p>Object (yes, no)</p></td>
+            </tr>
+            <tr>
+              <td><p>14.</p></td>
+              <td><p>Q8</p></td>
+              <td>
+                <p>Does the child make eye contact with the play companion?</p>
+              </td>
+              <td><p>Object (yes, no)</p></td>
+            </tr>
+            <tr>
+              <td><p>15.</p></td>
+              <td><p>Q9</p></td>
+              <td><p>Is the child able to share or take turns in play?</p></td>
+              <td><p>Object (yes, no)</p></td>
+            </tr>
+            <tr>
+              <td><p>16.</p></td>
+              <td><p>Q10</p></td>
+              <td>
+                <p>
+                  Does the child talk with themselves or others during play?
+                </p>
+              </td>
+              <td><p>Object (yes, no)</p></td>
+            </tr>
+            <tr>
+              <td><p>17.</p></td>
+              <td><p>Q11</p></td>
+              <td>
+                <p>
+                  What type of toys does she choose to play with? (car, ball,
+                  mobile, spoon, not specific, teddy)
+                </p>
+              </td>
+              <td><p>Object</p></td>
+            </tr>
+            <tr>
+              <td><p>18.</p></td>
+              <td><p>Object Rating</p></td>
+              <td><p>Single-word understanding (rating out of 5)</p></td>
+              <td><p>Integer</p></td>
+            </tr>
+            <tr>
+              <td><p>19.</p></td>
+              <td><p>Body Part Rating</p></td>
+              <td><p>Single-word understanding (rating out of 5)</p></td>
+              <td><p>Integer</p></td>
+            </tr>
+            <tr>
+              <td><p>20.</p></td>
+              <td><p>Result</p></td>
+              <td>
+                <p>
+                  It is the target variable that we have to predict (ASD, SLD,
+                  Normal, and Others).
+                </p>
+              </td>
+              <td><p>Object</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <footer class="bg-dark text-center text-white">
+      <div class="container p-4 pb-0">
+        <section class="mb-4">
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="#!"
+            role="button"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="#!"
+            role="button"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="#!"
+            role="button"
+            ><i class="fab fa-google"></i
+          ></a>
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="#!"
+            role="button"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="#!"
+            role="button"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="#!"
+            role="button"
+            ><i class="fab fa-github"></i
+          ></a>
+        </section>
+      </div>
+
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="#">AutismPredictor.com</a>
+      </div>
+    </footer>
+  </body>
+</html>

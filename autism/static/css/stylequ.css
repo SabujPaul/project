@@ -1,0 +1,83 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+
+header .navbar {
+  background-color: #191825 !important;
+}
+
+.user {
+  background-color: #865dff;
+  margin-left: 50px;
+  padding: 0 15px;
+  border-radius: 5px;
+}
+
+#submit {
+  background-color: #865dff;
+  border: none;
+  padding: 10px 5px;
+  color: white;
+  margin: 0 auto;
+  width: 87%;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+#submit:hover {
+  background-color: #7850f3;
+}
+.form-container {
+  max-width: 1366px;
+  min-height: 120vh;
+}
+
+form {
+  background-color: #191825;
+  padding: 50px 30px;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+form label {
+  margin-bottom: 5px;
+  color: white;
+}
+
+/* Questions Table CSS */
+.question-table {
+  max-width: 1366px;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.question-table table,
+th,
+td {
+  border-collapse: collapse;
+  border: 1px solid white;
+}
+
+.question-table table td {
+  padding: 5px;
+}
+/* 
+tbody tr td:nth-child(1) {
+  color: white;
+  background-color: #191825;
+}
+tbody tr td:nth-child(2) {
+  color: white;
+  background-color: #35a051;
+} */
+tr:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+}
+
+th:nth-child(even),
+td:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+}
+

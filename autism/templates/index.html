@@ -1,0 +1,518 @@
+
+<!-- Modal -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CDN -->
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <!-- Font Family -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+   
+    <!-- Font Awesome CDN -->
+    <script
+      src="https://kit.fontawesome.com/405dfcd106.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Style Link-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylequ.css' %}">
+  
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Prediction Results</h5>
+                 <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <h5>Prediction Input:</h5>
+                  <div>Age: <span id="ag"></span></div>
+                  <div>Object_Rating: <span id="or"></span></div>
+                  <div>BodyPart_Rating: <span id="br"></span></div>
+                  <div>Gender: <span id="gn"></span></div>
+                  <div>Delivery: <span id="dl"></span></div>
+                  <div>Birth_Injury: <span id="bi"></span></div>
+                  <div>Jaundice: <span id="jn"></span></div>
+                  <div>Cousin_Marriage: <span id="cm"></span></div>
+                  <div>Q1: <span id="qa"></span></div>
+                  <div>Q2: <span id="qb"></span></div>
+                  <div>Q3: <span id="qc"></span></div>
+                  <div>Q4: <span id="qd"></span></div>
+                  <div>Q5: <span id="qe"></span></div>
+                  <div>Q6: <span id="qf"></span></div>
+                  <div>Q7: <span id="qg"></span></div>
+                  <div>Q8: <span id="qh"></span></div>
+                  <div>Q9: <span id="qi"></span></div>
+                  <div>Q10: <span id="qj"></span></div>
+                  <div>Q11: <span id="qk"></span></div>
+                  <h5 class="pt-3">Prediction Classification:</h5>
+                  <div id="prediction"></div>
+              </div>
+              <div class="modal-footer">
+                  <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                  <a class="btn btn-primary" href="/results" role="button">View DB</a>
+              </div>
+          </div>
+      </div>
+  </div>
+
+    <!-- Navbar -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand fw-bold" href="#">Autism Prediction</a>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/results">DB</a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/questions">QUESTIONS</a>
+              </li>
+              <li class="nav-item user">
+                <a style="color: white" class="nav-link" href="#">Hello User</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- Navbar End -->
+    <!--Main Body Start-->
+    <div class="form-container container mt-5">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="col-md-12">
+          <h1 class="text-center fw-bold">Autism Prediction</h1>
+          <form
+            action=""
+            id="post-form"
+            class="mt-5 row justify-content-center align-self-center gap-3"
+          >
+            {% csrf_token %} 
+            <div class="form-group col">
+              <label for="Age">Age</label>
+              <input
+                type="number"
+                step="0.1"
+                class="form-control"
+                id="Age"
+                placeholder="Ex:28"
+                required
+              />
+            </div>
+            <div class="form-group col">
+              <label for="Object_rating">Object_rating</label>
+              <input
+                type="number"
+                step="1"
+                class="form-control"
+                id="Object_Rating"
+                placeholder="Out of 5"
+                required
+              />
+            </div>
+            <div class="form-group col">
+              <label for="BodyPart_rating">BodyPart_rating</label>
+              <input
+                type="number"
+                step="1"
+                class="form-control"
+                id="BodyPart_Rating"
+                placeholder="Out of 5"
+                required
+              />
+            </div>
+            <div class="form-group col">
+              <label for="Gender">Gender</label>
+              <select id="Gender" class="form-control" name="Gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div class="form-group col">
+              <label for="Delivery">Delivery</label>
+              <select
+                id="Delivery"
+                class="form-control"
+                name="Delivery"
+                placeholder=""
+                required
+              >
+                <option value="normal">Normal</option>
+                <option value="c-section">C-Section</option>
+              </select>
+            </div>
+            <div class="form-group col">
+              <label for="Birth_Injury">Birth_Injury</label>
+              <select
+                id="Birth_Injury"
+                class="form-control"
+                name="Birth_Injury"
+                placeholder=""
+                required
+              >
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="form-group col">
+              <label for="Jaundice">Jaundice</label>
+              <select
+                id="Jaundice"
+                class="form-control"
+                name="Jaundice"
+                placeholder=""
+                required
+              >
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="form-group col">
+              <label for="Cousin_Marriage">Cousin_Marriage</label>
+              <select
+                id="Cousin_Marriage"
+                class="form-control"
+                name="Cousin_Marriage"
+                placeholder=""
+                required
+              >
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="row gap-3 justify-content-center">
+              <div class="form-group col-6">
+                <label for="Q1"
+                  >Does the child turn their head to locate the source of sound/
+                  voice?</label
+                >
+                <select
+                  id="Q1"
+                  class="form-control"
+                  name="Q1"
+                  placeholder=""
+                  required
+                >
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div class="form-group col-5">
+                <label for="Q2">Do they respond to their own name?</label>
+                <select
+                  id="Q2"
+                  class="form-control"
+                  name="Q2"
+                  placeholder=""
+                  required
+                >
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div class="form-group col-6">
+                <label for="Q3"
+                  >Can the child identify family members by name?</label
+                >
+                <select
+                  id="Q3"
+                  class="form-control"
+                  name="Q3"
+                  placeholder=""
+                  required
+                >
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div class="form-group col-5">
+                <label for="Q4"
+                  >How does the child respond if you tell them &quot;no&quot;?
+                </label>
+                <select
+                  id="Q4"
+                  class="form-control"
+                  name="Q4"
+                  placeholder=""
+                  required
+                >
+                  <option value="aggresive">Aggresive</option>
+                  <option value="no response">No Response</option>
+                  <option value="cry">Cry</option>
+                  <option value="shouting">Shouting</option>
+                  <option value="good">Good</option>
+                </select>
+              </div>
+              <div class="form-group col-6">
+                <label for="Q5"
+                  >Can the child understand the meaning of any other
+                  words?</label
+                >
+                <select
+                  id="Q5"
+                  class="form-control"
+                  name="Q5"
+                  placeholder=""
+                  required
+                >
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div class="form-group col-5">
+                <label for="Q6">How does the child communicate?</label>
+                <select
+                  id="Q6"
+                  class="form-control"
+                  name="Q6"
+                  placeholder=""
+                  required
+                > <option value="cry">Cry</option>
+                  <option value="take people's hand">Take People's hand</option>
+                  <option value="shake their head">Shake their head</option>
+                  <option value="gesture">gesture</option>
+                  <option value="push">Push</option>
+                </select>
+              </div>
+              <div class="form-group col-6">
+                <label for="Q7">Does/ did the child babble?</label>
+                <select
+                  id="Q7"
+                  class="form-control"
+                  name="Q7"
+                  placeholder=""
+                  required
+                >
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div class="form-group col-5">
+                <label for="Q8"
+                  >Does the child make eye contact with the play
+                  companion?</label
+                >
+                <select
+                  id="Q8"
+                  class="form-control"
+                  name="Q8"
+                  placeholder=""
+                  required
+                >
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div class="form-group col-6">
+                <label for="Q9"
+                  >Is the child able to share or take turns in play?</label
+                >
+                <select
+                  id="Q9"
+                  class="form-control"
+                  name="Q9"
+                  placeholder=""
+                  required
+                >
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div class="form-group col-5">
+                <label for="Q10"
+                  >Does the child talk with themselves or others during
+                  play?</label
+                >
+                <select
+                  id="Q10"
+                  class="form-control"
+                  name="Q10"
+                  placeholder=""
+                  required
+                >
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div class="form-group col-8">
+                <label for="Q11"
+                  >What type of toys does she choose to play with?</label
+                >
+                <select
+                  id="Q11"
+                  class="form-control"
+                  name="Q11"
+                  placeholder=""
+                  required
+                >
+                  <option value="ball">Ball</option>
+                  <option value="teddy">Teddy</option>
+                  <option value="car">Car</option>
+                  <option value="spoon">Spoon</option>
+                  <option value="mobile">Mobile</option>
+                  <option value="notspecific">Not specific</option>
+                </select>
+              </div>
+            </div>
+            <button
+              type="submit"
+              value="Submit"
+              id="submit"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--Main Body End-->
+    <footer class="bg-dark text-center text-white">
+      <div class="container p-4 pb-0">
+        <section class="mb-4">
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="#!"
+            role="button"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="#!"
+            role="button"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="#!"
+            role="button"
+            ><i class="fab fa-google"></i
+          ></a>
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="#!"
+            role="button"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="#!"
+            role="button"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="#!"
+            role="button"
+            ><i class="fab fa-github"></i
+          ></a>
+        </section>
+      </div>
+
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Al Right Reserved:
+        <a class="text-white" href="#">AutismPredictor.com</a>
+      </div>
+    </footer>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"
+  ></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script>
+      $(document).on("submit", "#post-form", function (e) {
+        console.log("hello")
+        e.preventDefault();
+        $.ajax({
+          type: "POST",
+          url: '{% url "predict:submit_prediction" %}',
+          data: {
+            Age: $("#Age").val(),
+            Object_Rating: $("#Object_Rating").val(),
+            BodyPart_Rating: $("#BodyPart_Rating").val(),
+            Gender: $("#Gender").val(),
+            Delivery: $("#Delivery").val(),
+            Birth_Injury: $("#Birth_Injury").val(),
+            Jaundice: $("#Jaundice").val(),
+            Cousin_Marriage: $("#Cousin_Marriage").val(),
+            Q1: $("#Q1").val(),
+            Q2: $("#Q2").val(),
+            Q3: $("#Q3").val(),
+            Q4: $("#Q4").val(),
+            Q5: $("#Q5").val(),
+            Q6: $("#Q6").val(),
+            Q7: $("#Q7").val(),
+            Q8: $("#Q8").val(),
+            Q9: $("#Q9").val(),
+            Q10: $("#Q10").val(),
+            Q11: $("#Q11").val(),
+            csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+            action: "post",
+          },
+          success: function (json) {
+            document.forms["post-form"].reset();
+            document.getElementById("prediction").innerHTML = json["result"];
+            document.getElementById("ag").innerHTML = json["Age"];
+            document.getElementById("or").innerHTML = json["Object_Rating"];
+            document.getElementById("br").innerHTML = json["BodyPart_Rating"];
+            document.getElementById("gn").innerHTML = json["Gender"];
+            document.getElementById("dl").innerHTML = json["Delivery"];
+            document.getElementById("bi").innerHTML = json["Birth_Injury"];
+            document.getElementById("jn").innerHTML = json["Jaundice"];
+            document.getElementById("cm").innerHTML = json["Cousin_Marriage"];
+            document.getElementById("qa").innerHTML = json["Q1"];
+            document.getElementById("qb").innerHTML = json["Q2"];
+            document.getElementById("qc").innerHTML = json["Q3"];
+            document.getElementById("qd").innerHTML = json["Q4"];
+            document.getElementById("qe").innerHTML = json["Q5"];
+            document.getElementById("qf").innerHTML = json["Q6"];
+            document.getElementById("qg").innerHTML = json["Q7"];
+            document.getElementById("qh").innerHTML = json["Q8"];
+            document.getElementById("qi").innerHTML = json["Q9"];
+            document.getElementById("qj").innerHTML = json["Q10"];
+            document.getElementById("qk").innerHTML = json["Q11"];
+            $('#exampleModal').modal('show');
+            
+          },
+          error: function (xhr, errmsg, err) {},
+        });
+      });
+    </script>
+  </body>
+</html>
+
+

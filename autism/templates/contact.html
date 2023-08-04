@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <mata name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Responsive Contact US Page</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
+            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+             crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+             <link rel="stylesheet" type="text/css" href="{% static 'css/stylec.css' %}">
+             <link rel="stylesheet" type="text/css" href="{% static 'css/styled.css' %}">
+        </head>
+        <body>
+
+            <div class="full-page">
+                <div class="navbar">
+                <div>
+                <a href='#'>Autism Prediction</a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="/predictor">PREDICTION</a></li>
+                        <li><a href="/questions">QUESTIONS</a></li>
+                         <!--creating login form 
+                         <li><a href="#">DESIGN</a></li>
+                        ------------------------>
+            
+                        <li><a href="/contact">CONTACT</a></li>
+                        
+                   </ul>
+                </nav>
+             </div>
+            <section class="contact">
+                <div class="content">
+                    <h2>Contact Us</h2>
+                    <p>Early Diagnosis of Autism Can Be Very Beneficial in Terms of 
+                        Providing Patients with The Right Treatment at The Right Time.</p>
+                </div>
+                <div class="container">
+                    <div class="contactInfo">
+                        <div class="box">
+                            <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+                             <div class="text">
+                                <h3>Address</h3>
+                                <p>Jahurul Islam City Gate,<br>A/2 Jahurul Islam Ave,<br>Dhaka 1212</p>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i>
+                            </div>
+                            <div class="text">
+                                <h3>Phone</h3>
+                                <p>01320001299</p>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="icon"><i class="fa-sharp fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="text">
+                                <h3>Email</h3>
+                                <p>sabujpaul05@gmail.com</p>
+                                <p>ayshasiddeka64@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contactForm">
+                        <p id="thank-you-message">
+                            Thank you for contacting us. We will be in touch with you very soon.
+                          </p>
+                        <form method="post" action="#">
+                            {% csrf_token %}
+                            <h2>Send Message</h2>
+                            <div class="inputBox"> <input type="text" name='name' required="required"> 
+                                <span>Full Name</span>
+                            </div>
+                                <div class="inputBox">
+                                    <input type="email" name='email' required="required"> 
+                                    <span>Email</span>
+                                </div>
+                                <div class="inputBox">
+                                    <textarea type="text" name='subject'required="required"></textarea> 
+                                    <span>Type your Message...</span>
+                                </div>
+                                <div class="inputBox">
+                                    <input type="submit" name="" value="Send">
+                                    </div>
+                                </form>
+                        
+                            </div>
+                        </div>
+                        
+                        
+                       
+
+
+                </section>
+                        
+                            
+                           
+                         
+                        
+
+        
+    </head>
+    </body>
+</html>
