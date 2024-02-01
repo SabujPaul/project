@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.http import HttpResponse
 import pickle
+from joblib import load
 import pandas as pd
 from .models import PredResults
 from .models import Contact
@@ -162,8 +163,8 @@ def predict_chances(request):
             q11=4
         else:
             q11=5
-        # Unpickle model
-        model =pickle.load(open('H:/dismodel.pkl', 'rb'))
+        
+        model = load('linmodel.joblib')
         # Make prediction
         result = model.predict([[Age, Object_Rating, BodyPart_Rating, gender, delivery, birth_Injury, jaundice, cousin_marriage, q1, q2, q3, q4, q5, q6,
                                  q7, q8, q9, q10, q11]])
