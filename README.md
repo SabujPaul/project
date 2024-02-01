@@ -7,7 +7,7 @@ Technology: Python, Django, Vscode, google colab.
 command: pythom -m venv venv
 
 #Activate the virtual environment
-command: venv/script/activate
+command: venv/scripts/activate
 
 #install requirements.txt
 command: pip install -r requirements.txt
